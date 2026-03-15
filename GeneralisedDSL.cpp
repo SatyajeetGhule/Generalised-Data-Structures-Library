@@ -1477,6 +1477,432 @@ int DoublyCLL<T>::Count()
     return this->iCount;
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                  Stack Using Generic apporach
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// -----------------------------------------------------------------------------
+//  Stack (Using Templates)
+// -----------------------------------------------------------------------------
+// Description  : Implementation of Stack Data structure in C++
+//                using generic programming (templates).
+// Author       : Satyajeet Manohar Ghule
+// Date         : 08/01/2026
+// -----------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Name           : StackNode
+// Description    : Represents a single node of Stack Data structure.
+// Template Type  : T (Generic Data type)
+// Members        :
+//      Data  - Stores Data of generic type
+//      next  - Pointer to next node (used to maintain stack linkage)
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#pragma pack(1)
+template <class T>
+class Stacknode
+{
+    public:
+        T Data;
+        Stacknode<T> * next;
+
+        Stacknode(T no)
+        {
+            this->Data = no;
+            this->next = NULL;
+        }
+};
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Class Name  : Stack
+// Description : Implements Stack Data structure operations.
+// Features    :
+//      - Push element into the stack
+//      - Pop element from the stack
+//      - Peep top element of the stack
+//      - Display stack elements
+//      - Count total number of elements in the stack
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+template <class T>
+class Stack
+{
+    private:
+        Stacknode<T> * first;
+        int iCount;
+
+    public:
+        Stack();
+
+        void Push(T);         
+        T Pop();            
+        T Peep();
+        void Display();
+        int Count();
+};
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Function Name : Stack (Constructor)
+// Description   : Initializes an empty stack by setting the top pointer
+//                 to NULL and element count to zero.
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+template <class T>
+Stack<T> :: Stack()
+{
+    cout<<"Stack is Created...\n";
+    this->first = NULL;
+    this->iCount = 0;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//  Function Name  : Push
+//  Description    : Inserts an element at the top of the stack
+//  Input          : Integer value
+//  Output         : None
+//  Author         : Satyajeet Manohar Ghule
+//  Date           : 08/01/2026
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+template <class T>
+void Stack<T> :: Push(T no)
+{
+    Stacknode<T> * newn = NULL;
+    newn = new Stacknode<T>(no);
+
+    newn -> next= this->first;
+    this->first = newn;
+
+    this->iCount++;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//  Function Name  : Pop
+//  Description    : Removes and returns the top element from the stack
+//  Input          : None
+//  Output         : Integer (removed element)
+//  Author         : Satyajeet Manohar Ghule
+//  Date           : 08/01/2026
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+template <class T>
+T Stack<T>:: Pop()
+{
+    T Value = 0;
+    Stacknode<T> * temp = this->first;
+
+    if(this->first == NULL)
+    {
+        cout<<"Stack is empty\n";
+        return -1;
+    }
+
+    Value = this->first->Data;
+
+    this->first = this->first->next;
+    delete temp;
+
+    this->iCount--;
+
+    return Value;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//  Function Name  : Peep
+//  Description    : Returns the top element of the stack without removing it
+//  Input          : None
+//  Output         : Integer (top element)
+//  Author         : Satyajeet Manohar Ghule
+//  Date           : 08/01/2026
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+template <class T>
+T Stack<T> :: Peep()
+{
+    T Value = 0;
+
+    if(this->first == NULL)
+    {
+        cout<<"Stack is empty\n";
+        return -1;
+    }
+
+    Value = this->first->Data;
+
+    return Value;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//  Function Name  : Display
+//  Description    : Displays all elements of the stack from top to bottom
+//  Input          : None
+//  Output         : Stack elements
+//  Author         : Satyajeet Manohar Ghule
+//  Date           : 08/01/2026
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+template <class T>
+void Stack<T> :: Display()
+{
+    Stacknode<T> * temp = NULL;
+    temp = this->first;
+
+    if(this->first == NULL)
+    {
+        cout<<"Stack is Empty\n";
+        return;
+    }
+
+    while(temp != NULL)
+    {
+        cout<<"|\t"<<temp->Data<<"\t|\n";
+        temp = temp -> next;
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//  Function Name  : Count
+//  Description    : Returns the total number of elements present in the queue
+//  Input          : None
+//  Output         : Integer (count of elements)
+//  Author         : Satyajeet Manohar Ghule
+//  Date           : 08/01/2026
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+template <class T>
+int Stack<T> :: Count()
+{
+    return this->iCount;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//                        Queue Using Generic apporach
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+// -----------------------------------------------------------------------------
+//  Queue (Using Templates)
+// -----------------------------------------------------------------------------
+// Description  : Implementation of Queue Data structure in C++
+//                using generic programming (templates).
+// Author       : Satyajeet Manohar Ghule
+// Date         : 08/01/2026
+// -----------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Name           : QueueNode
+// Description    : Represents a single node of Queue Data structure.
+// Template Type  : T (Generic Data type)
+// Members        :
+//      Data  - Stores Data of generic type
+//      next  - Pointer to next node (used to maintain queue linkage)
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#pragma pack(1)
+template <class T>
+class Queuenode
+{
+    public:
+        T Data;
+        Queuenode<T> * next;
+
+        Queuenode(T no)
+        {
+            this->Data = no;
+            this->next = NULL;
+        }
+};
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Class Name  : Queue
+// Description : Implements Queue Data structure operations.
+// Features    :
+//      - Enqueue element into the queue
+//      - Dequeue element from the queue
+//      - Display queue elements
+//      - Count total number of elements in the queue
+// Notes       :
+//      - Maintains two pointers:
+//            * first - Points to the front element of the queue
+//            * last  - Points to the rear element of the queue
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+template <class T>
+class Queue
+{
+    private:
+        Queuenode<T> * first;
+        Queuenode<T> * last;
+        int iCount;
+
+    public:
+        Queue();
+
+        void EnQueue(T);    
+        T DeQueue();          
+        void Display();
+        int Count();
+};
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// Function Name : Queue (Constructor)
+// Description   : Initializes an empty queue by setting both first and last
+//                 pointers to NULL and element count to zero.
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+template <class T>
+Queue<T> :: Queue()
+{
+    cout<<"Queue is Created...\n";
+    this->first = NULL;
+    this->last = NULL;
+    this->iCount = 0;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//  Function Name  : EnQueue
+//  Description    : Inserts an element at the rear end of the queue
+//  Input          : Integer value
+//  Output         : None
+//  Author         : Satyajeet Manohar Ghule
+//  Date           : 08/01/2026
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+template <class T>
+void Queue<T> :: EnQueue(T no)
+{
+    Queuenode<T> * newn = NULL;
+    newn = new Queuenode<T>(no);
+
+    if(this->first == NULL && this->last == NULL)
+    {
+        this->first = newn;
+        this->last = newn;
+    }
+    else
+    {
+        this->last->next = newn;
+        this->last = this->last->next;      // this->last = newn;
+    }
+
+    this->iCount++;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//  Function Name  : Dequeue
+//  Description    : Removes and returns the front element from the queue
+//  Input          : None
+//  Output         : Integer (removed element)
+//  Author         : Satyajeet Manohar Ghule
+//  Date           : 08/01/2026
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+template <class T>
+T Queue<T> :: DeQueue()
+{
+    if(this->first == NULL && this->last == NULL)
+    {
+        cout<<"Queue is empty\n";
+        return -1;
+    }
+
+    T Value;
+    Queuenode<T> * temp = this->first;
+
+    Value = this->first->Data;
+
+    if(this->first == this->last)
+    {
+        delete first;
+        this->first = NULL;
+        this->last = NULL;
+    }
+    else
+    {
+        this->first = this->first -> next;
+        delete temp;
+    }
+
+    this->iCount--;
+
+    return Value;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//  Function Name  : Display
+//  Description    : Displays all elements of the queue from front to rear
+//  Input          : None
+//  Output         : Queue elements
+//  Author         : Satyajeet Manohar Ghule
+//  Date           : 08/01/2026
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+template <class T>
+void Queue<T> :: Display()
+{
+    Queuenode<T> * temp = NULL;
+    temp = this->first;
+
+    if(this->first == NULL && this->last == NULL)
+    {
+        cout<<"Queue is Empty\n";
+        return;
+    }
+
+    while(temp != NULL)
+    {
+        cout<<"| "<<temp->Data<<" |--";
+        temp = temp -> next;
+    }
+    cout<<"\n";
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//  Function Name  : Count
+//  Description    : Returns the total number of elements present in the queue
+//  Input          : None
+//  Output         : Integer (count of elements)
+//  Author         : Satyajeet Manohar Ghule
+//  Date           : 08/01/2026
+//
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+template <class T>
+int Queue<T> :: Count()
+{
+    return this->iCount;
+}
+
 ////////////////////////////// End of Libray ///////////////////////////////////
 
 int main()
