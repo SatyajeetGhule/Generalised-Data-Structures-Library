@@ -1,82 +1,168 @@
-# Generalised-Data-Structures-Library
-This project is a template-based C++ data structure library that provides reusable implementations of singly, doubly, and circular linked lists. It supports multiple data types using generic programming and follows an object-oriented design approach.
+# 📚 Generic Data Structure Library in C++
 
+A **Generic Data Structure Library** implemented in **C++ using Templates**.
+This project provides reusable and type-independent implementations of common data structures such as **Linked Lists, Stack, and Queue**.
 
-# 📚 Generalised Data Structure Library (C++)
-
-This project is a **generic (template-based) data structure library** implemented in C++.  
-It provides reusable implementations of different types of **Linked Lists** using templates, allowing the same code to work with multiple data types.
+The library is designed using **Generic Programming (Templates)** so that the same implementation works with multiple data types like `int`, `float`, `char`, etc.
 
 ---
 
-## 🚀 Features
+# 🚀 Features
 
-- Generic implementation using C++ templates
-- Supports multiple linked list variants
-- Clean, modular, and reusable design
-- Suitable for learning data structures and interview preparation
-
----
-
-## 🧱 Data Structures Implemented
-
-| Type | Data Structure |
-|----|---------------|
-| Singly Linear | Singly Linear Linked List |
-| Singly Circular | Singly Circular Linked List |
-| Doubly Linear | Doubly Linear Linked List |
-| Doubly Circular | Doubly Circular Linked List |
+✔ Generic implementation using **C++ Templates**
+✔ Clean and modular **Object-Oriented Design**
+✔ Supports multiple **Linked List structures**
+✔ Dynamic memory management using `new` and `delete`
+✔ Fully reusable library for multiple data types
 
 ---
 
-## ⚙️ Operations Supported
+# 🧩 Data Structures Implemented
 
-- InsertFirst
-- InsertLast
-- InsertAtPos
-- DeleteFirst
-- DeleteLast
-- DeleteAtPos
-- Display
-- Count
-
-All operations work for **any data type** using templates.
+| Data Structure              | Description                               |
+| --------------------------- | ----------------------------------------- |
+| Singly Linear Linked List   | Nodes connected in one direction          |
+| Singly Circular Linked List | Last node points to first node            |
+| Doubly Linear Linked List   | Nodes have next and previous pointers     |
+| Doubly Circular Linked List | Circular structure with two-way traversal |
+| Stack                       | LIFO (Last In First Out) structure        |
+| Queue                       | FIFO (First In First Out) structure       |
 
 ---
 
-## 🛠️ Technologies Used
+# 📂 Project Structure
 
-- C++
-- Object-Oriented Programming
-- Templates (Generic Programming)
-
----
-
-## ▶️ How to Run
-
-Compile and run using any C++ compiler:
-
-```bash
-g++ filename.cpp
-./a.out
+```
+Generic-Data-Structure-Library
+│
+├── SinglyLLL
+├── SinglyCLL
+├── DoublyLLL
+├── DoublyCLL
+├── Stack
+├── Queue
+└── main.cpp
 ```
 
 ---
 
-🎯 Purpose
+# 🛠 Technologies Used
 
-This library is designed to:
-
-Understand the internal working of linked lists
-
-Practice generic programming using C++ templates
-
-Build strong fundamentals for interviews and system-level programming
+* **C++**
+* **Templates (Generic Programming)**
+* **Object-Oriented Programming**
+* **Dynamic Memory Allocation**
 
 ---
 
-👨‍💻 Author
+# 📌 Operations Supported
 
-Satyajeet Manohar Ghule
+## Linked List
 
-Date: January 2026
+* Insert First
+* Insert Last
+* Insert At Position
+* Delete First
+* Delete Last
+* Delete At Position
+* Display
+* Count
+
+---
+
+## Stack
+
+* Push
+* Pop
+* Peep
+* Display
+* Count
+
+---
+
+## Queue
+
+* Enqueue
+* Dequeue
+* Display
+* Count
+
+---
+
+# ▶ Example Usage
+
+```cpp
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    SinglyLLL<int> obj;
+
+    obj.InsertFirst(10);
+    obj.InsertFirst(20);
+    obj.InsertLast(30);
+
+    obj.Display();
+
+    cout<<"Total Nodes : "<<obj.Count()<<endl;
+
+    return 0;
+}
+```
+
+---
+
+# ⚡ Advantages of Generic Implementation
+
+* Code reuse
+* Type safety
+* Reduced duplication
+* Flexible design
+
+Example:
+
+```cpp
+SinglyLLL<int> list1;
+SinglyLLL<float> list2;
+SinglyLLL<char> list3;
+```
+
+---
+
+# 📊 Time Complexity
+
+| Operation     | Complexity |
+| ------------- | ---------- |
+| Insert First  | O(1)       |
+| Insert Last   | O(n)       |
+| Delete First  | O(1)       |
+| Delete Last   | O(n)       |
+| Stack Push    | O(1)       |
+| Stack Pop     | O(1)       |
+| Queue Enqueue | O(1)       |
+| Queue Dequeue | O(1)       |
+
+---
+
+# 📖 Learning Outcomes
+
+This project helps in understanding:
+
+* Generic Programming in C++
+* Linked List Implementation
+* Stack and Queue Implementation
+* Dynamic Memory Management
+* Object Oriented Design
+
+---
+
+# 👨‍💻 Author
+
+**Satyajeet Manohar Ghule**
+
+---
+
+# 📜 License
+
+This project is for **educational and learning purposes**.
